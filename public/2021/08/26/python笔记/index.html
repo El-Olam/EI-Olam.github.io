@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Bentham&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Bentham&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title"></h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">John Doe</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">August 26, 2021&nbsp;&nbsp;23:03:44</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="python文件内容操作"><a href="#python文件内容操作" class="headerlink" title="python文件内容操作"></a>python文件内容操作</h1><p>做题的时候碰到需要读取文件的操作了，于是准备学习一下相关的知识</p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>文件按照数据的组织形势分为两种：1）文本文件、2）二进制文件</p>
+<h3 id="文本文件"><a href="#文本文件" class="headerlink" title="文本文件"></a>文本文件</h3><p>文本文件存储的是常规字符串，由若干文本行组成，通常每行以换行符’\n’结尾。常规字符串是在文本编辑器中可以正确显示、编辑，并且人类可以直接阅读理解的字符串。实际上在磁盘中，文本文件也是以二进制的形势存储的，只是在读取查看的时候使用了正确的编码方式进行了解码，将二进制信息还原为了字符串信息，所以可以直接阅读和理解。</p>
+<h3 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h3><p>二进制文件常见的有图形图像文件、音视频文件、可执行文件、资源文件、各类数据库文件  、各类Office文件等。这种文件不能被记事本或其他普通字处理软件编辑，需要有正确的软件进行解码或者反序列化才能正确的读取。</p>
+<h2 id="文件操作基本知识"><a href="#文件操作基本知识" class="headerlink" title="文件操作基本知识"></a>文件操作基本知识</h2><h3 id="内置函数open（）"><a href="#内置函数open（）" class="headerlink" title="内置函数open（）"></a>内置函数open（）</h3><p>该函数可以用指定模式打开指定文件并创建文件对象，完整的函数用法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">open</span>(file,mode=<span class="string">&#x27;r&#x27;</span>,buffering=-<span class="number">1</span>,encoding=<span class="literal">None</span>,errors=<span class="literal">None</span>,newline=<span class="literal">None</span>,closefd=<span class="literal">True</span>,opener=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>其主要参数含义如下：</p>
+<p>​        （1）file指定要打开或创建文件的名称，如果该文件不在当前目录中，可以使用相对路径或绝对路径，为了减少路径中分隔符的输入，可以使用原始字符串。</p>
+<p>​        （2）mode指定打开文件后的处理方法。</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r</td>
+<td align="left">读模式（默认模式，可省略），如果文件不存在则抛出异常</td>
+</tr>
+<tr>
+<td>w</td>
+<td align="left">写模式，如果文件已存在，先清空原有内容</td>
+</tr>
+<tr>
+<td>x</td>
+<td align="left">写模式，创建新文件，如果文件已存在则抛出异常</td>
+</tr>
+<tr>
+<td>a</td>
+<td align="left">追加模式，不覆盖文件原有内容</td>
+</tr>
+<tr>
+<td>b</td>
+<td align="left">二进制模式（可与其它模式组合使用），使用二进制模式打开文件时不允许指定encoding参数</td>
+</tr>
+<tr>
+<td>t</td>
+<td align="left">文本模式（默认模式，可省略）</td>
+</tr>
+<tr>
+<td>+</td>
+<td align="left">读写模式（可与其它模式组合）</td>
+</tr>
+</tbody></table>
+<p>“只读”和“只写”模式打开时文件指针的初始位置是文件头，“追加”模式打开时文件指针的初始位置为文件尾，“只读”模式打开的文件不能进行写操作，“只写”模式也不能进行读操作。</p>
+<p>如果执行正常，open（）函数会返回一个可迭代的文件对象，通过该对象可以对文件进行读写操作，如果指定文件不存在、访问权限不够、磁盘空间不够或其它原因导致创建文件对象失败则抛出异常。当对文件内容操作完成后，一定要关闭文件对象（f1.close()），这样才能将修改保存。当然，即使写了关闭文件的代码，也不能保证文件就一定可以正常关闭（with关键字可以避免这个问题）</p>
+<h3 id="文件对象属性与常用方法"><a href="#文件对象属性与常用方法" class="headerlink" title="文件对象属性与常用方法"></a>文件对象属性与常用方法</h3><p>文件对象属性</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">buffer</td>
+<td align="left">返回当前文件的缓冲区对象</td>
+</tr>
+<tr>
+<td align="center">closed</td>
+<td align="left">判断文件是否关闭，若文件已关闭则返回Trued</td>
+</tr>
+<tr>
+<td align="center">fileno</td>
+<td align="left">文件号</td>
+</tr>
+<tr>
+<td align="center">mode</td>
+<td align="left">返回文件的打开方式</td>
+</tr>
+<tr>
+<td align="center">name</td>
+<td align="left">返回文件的名称</td>
+</tr>
+</tbody></table>
+<p>常用方法</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>close()</td>
+<td>把缓冲区的内容写入文件，同时关闭文件，并释放文件对象</td>
+</tr>
+<tr>
+<td>flush()</td>
+<td>把缓冲区的内容写入文件，但不关闭文件</td>
+</tr>
+<tr>
+<td>read([size])</td>
+<td>从文本文件中读取size的字节（Python2.x）或字符(Python3.x)的内容作为结果返回，或从二进制文件中读取指定数量的字节并返回，如果省略size则表示读取所有内容</td>
+</tr>
+<tr>
+<td>readline()</td>
+<td>从文本文件中读取一行内容作为结果返回</td>
+</tr>
+<tr>
+<td>readlines()</td>
+<td>把文本文件中的每行文本作为一个字符串存入列表中，返回该列表，对于大文件会占用较多内存，不建议使用</td>
+</tr>
+<tr>
+<td>seek(offset[,whence])</td>
+<td>把文件指针移动到新的位置，offset表示相对于whence的位置。whence为0表示从文件头开始计算，whence为1表示从当前位置开始计算，whence为2表示从文件尾开始计算，默认为0</td>
+</tr>
+<tr>
+<td>seekable()</td>
+<td>测试当前文件是否支持随机访问，如果文件不支持随机访问，则调用方法seek()、tell()和truncate()时会抛出异常</td>
+</tr>
+<tr>
+<td>tell()</td>
+<td>返回文件指针的当前位置</td>
+</tr>
+<tr>
+<td>write(s)</td>
+<td>把字符串s的内容写入文件</td>
+</tr>
+<tr>
+<td>writelines(s)</td>
+<td>把字符串列表写入文本文件，不添加换行符</td>
+</tr>
+</tbody></table>
+<p>文件读写操作相关的函数都会自动改变文件呢指针的位置，例如以读模式打开文本文件，读取10个字符，会自动把文件指针移动到第11个字符的位置，再次读取字符的时候总是从文件指针的当前位置开始，写入文件的操作函数也具有同样的特点</p>
+<h3 id="上下文管理语句with"><a href="#上下文管理语句with" class="headerlink" title="上下文管理语句with"></a>上下文管理语句with</h3><p>关键字with可以自动管理资源，不论因为什么原因（哪怕是代码引发了异常）跳出了with块，总能保证文件被正确关闭，可以在代码块执行完毕后自动还原进入该代码块时的上下文，常用语文件操作、数据库连接、网络通信连接、多线程与多线程同步时的锁对象管理等场合（我也不知道这是干啥的）。用于文件内容读写时，with语句的用法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span> (filename,mode,encoding) <span class="keyword">as</span> fp:</span><br></pre></td></tr></table></figure>
+
+<p>另外，上下文管理语句with还支持下面的用法，进一步简化了代码的编写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;text.txt&#x27;</span>,<span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> src, <span class="built_in">open</span>(<span class="string">&#x27;text_new.txt&#x27;</span>,<span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> dst:</span><br><span class="line">	dst.write(src.read())</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h2><h3 id="报错“embedded-null-character”"><a href="#报错“embedded-null-character”" class="headerlink" title="报错“embedded null character”"></a>报错“embedded null character”</h3><p>这个通常是因为路径里面的“\”被当做转移字符了，只要将路径字符串前面加上r就可以，或者把“\”换成“\”</p>
+<h3 id="报错“unsupported-operand-type-s-for-pow-‘bytes’-‘mpz’-‘int’”"><a href="#报错“unsupported-operand-type-s-for-pow-‘bytes’-‘mpz’-‘int’”" class="headerlink" title="报错“unsupported operand type(s) for pow(): ‘bytes’, ‘mpz’, ‘int’”"></a>报错“unsupported operand type(s) for pow(): ‘bytes’, ‘mpz’, ‘int’”</h3><p>这个问题来自于pow函数支持的数据类型，因为在计算逆元的时候返回的结果是mpz，这个可以用int()来强制转换。</p>
+<h3 id="报错“’gbk’-codec-can’t-decode-byte-0xd7-in-position-13-illegal-multibyte-sequence”"><a href="#报错“’gbk’-codec-can’t-decode-byte-0xd7-in-position-13-illegal-multibyte-sequence”" class="headerlink" title="报错“’gbk’ codec can’t decode byte 0xd7 in position 13: illegal multibyte sequence”"></a>报错“’gbk’ codec can’t decode byte 0xd7 in position 13: illegal multibyte sequence”</h3><p>这个问题应该是说编码的格式不对，在指定读取模式的后面加上encoding=”utf-8”</p>
+<h3 id="报错“an-integer-is-required-got-type-str-”"><a href="#报错“an-integer-is-required-got-type-str-”" class="headerlink" title="报错“an integer is required (got type str)”"></a>报错“an integer is required (got type str)”</h3><p>这个问题是在指定编码方式时没有加上encoding=。如果不加上，那么默认的第三参数是buffering，该参数本身需要传入一个整型变量才行。</p>
+<p>格式为def open(file, mode=’r’, buffering=None, encoding=None, errors=None, newline=None, closefd=True):</p>
+<h3 id="报错“SyntaxError-invalid-character-in-identifier”"><a href="#报错“SyntaxError-invalid-character-in-identifier”" class="headerlink" title="报错“SyntaxError: invalid character in identifier”"></a>报错“SyntaxError: invalid character in identifier”</h3><p>意思是标识符中存在无效字，很有可能是因为复制代码时出现了中文字符导致了无法识别或者多余的空格出现在行首或者行尾。</p>
+<h3 id="报错“ValueError-invalid-literal-for-int-with-base-10”"><a href="#报错“ValueError-invalid-literal-for-int-with-base-10”" class="headerlink" title="报错“ValueError: invalid literal for int() with base 10”"></a>报错“ValueError: invalid literal for int() with base 10”</h3><p>意思是以十为基数的int文本无效</p>
+<h3 id="报错“TypeError-‘builtin-function-or-method’-object-is-not-subscriptable”"><a href="#报错“TypeError-‘builtin-function-or-method’-object-is-not-subscriptable”" class="headerlink" title="报错“TypeError: ‘builtin_function_or_method’ object is not subscriptable”"></a>报错“TypeError: ‘builtin_function_or_method’ object is not subscriptable”</h3><p>问题可能出现在函数括号用错了，比如本来是应该用( )，结果用了[ ]</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>John Doe</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2021/08/26/python%E7%AC%94%E8%AE%B0/">http://example.com/2021/08/26/python%E7%AC%94%E8%AE%B0/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/08/26/python%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/"></a>
+            
+            
+            <a class="next" rel="next" href="/2021/07/09/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%95%E9%AA%8C%E7%94%A8%E6%A0%87%E9%A2%98/">搭建博客试验用标题</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© John Doe | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

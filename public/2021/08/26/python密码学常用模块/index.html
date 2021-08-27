@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Bentham&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Bentham&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title"></h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">John Doe</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">August 26, 2021&nbsp;&nbsp;23:03:44</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Python-密码学常用模块"><a href="#Python-密码学常用模块" class="headerlink" title="Python 密码学常用模块"></a>Python 密码学常用模块</h1><h2 id="hashlib"><a href="#hashlib" class="headerlink" title="hashlib"></a>hashlib</h2><p>该模块为许多不同的安全散列和消息摘要算法实现了一个通用接口。包括 FIPS 安全哈希算法 SHA1、SHA224、SHA256、SHA384 和 SHA512（在 FIPS 180-2 中定义）以及 RSA 的 MD5 算法（在 Internet 中定义）<a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc1321.html"><strong>RFC 1321</strong></a> )。术语“安全哈希”和“消息摘要”可以互换。较旧的算法称为消息摘要。现代术语是安全哈希。</p>
+<p>使用例子：</p>
+<ol>
+<li><p>```python<br>import hashlib</p>
+<p>str1 = b”hello “<br>str2 = b”world”<br>str3 = b”hello world”</p>
+<p>m1 = hashlib.md5()             #生成一个md5对象<br>m1.update(str1)                #以bytes类型填充md5对象<br>m1.update(str2)<br>m2 = hashlib.md5()<br>m2.update(str3)</p>
+<p>#digest()返回传递给update()方法的数据的摘要。它是一个大小为digest_size的字节对象，包含的字节可以在0到255整个范围。<br>print(“m1 hexdigest: “, m1.digest())<br>print(“m2 hexdigest: “, m2.digest())<br>#hexdigest()类似digest()，但是摘要以2倍长度的字符串对象返回，只包含十六进制数字。这可用于在电子邮件或其它非二进制环境中安全交换数据。<br>print(“m1 hexdigest: “, m1.hexdigest())<br>print(“m2 hexdigest: “, m2.hexdigest())</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>:<br>m1 hexdigest:  b’^\xb6;\xbb\xe0\x1e\xee\xd0\x93\xcb”\xbb\x8fZ\xcd\xc3’<br>m2 hexdigest:  b’^\xb6;\xbb\xe0\x1e\xee\xd0\x93\xcb”\xbb\x8fZ\xcd\xc3’<br>m1 hexdigest:  5eb63bbbe01eeed093cb22bb8f5acdc3<br>m2 hexdigest:  5eb63bbbe01eeed093cb22bb8f5acdc3</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   　**注：可以发现，只要数据一样（格式不同），则MD5码相同（即update()是以原来的基础继续生成MD5码，而不是新内容覆盖旧内容）。**</span><br><span class="line"></span><br><span class="line">   　　只需更改构造函数即可使用不同的安全散列算法，其调用方式与上面的完全一样。</span><br><span class="line"></span><br><span class="line">2. 对于一次性数据，有中更精炼的写法，示例如下（其余算法一样）：</span><br><span class="line"></span><br><span class="line">   ```python</span><br><span class="line">   md5 = hashlib.md5(b&#x27;hello world&#x27;)</span><br><span class="line">   print(md5.hexdigest())</span><br></pre></td></tr></table></figure></li>
+<li><p><code>hashlib.new</code>(name[, data])</p>
+<p>是一个通用构造函数，它接受所需算法的字符串名称作为其第一个参数。它也存在允许访问上面列出的哈希以及您的OpenSSL库可能提供的任何其他算法。命名的构造函数比<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/hashlib.html?highlight=new#hashlib.new"><code>new()</code></a>快得多，应该是首选。</p>
+<p>注：这一段中文档也是如此，且连接指向的地址也同样是这一段内容，理解不了就直接用吧。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span></span><br><span class="line">h = hashlib.new(<span class="string">&#x27;sha512_256&#x27;</span>)</span><br><span class="line">h.update(<span class="string">b&quot;Nobody inspects the spammish repetition&quot;</span>)</span><br><span class="line">h.hexdigest()</span><br><span class="line"><span class="string">&#x27;19197dc4d03829df858011c6c87600f994a858103bbc19005f20987aa19a97e2&#x27;</span></span><br><span class="line"><span class="number">2.</span></span><br><span class="line">h = hashlib.new(<span class="string">&#x27;ripemd160&#x27;</span>)<span class="comment">#ripemd160也是一种安全散列算法</span></span><br><span class="line">h.update(<span class="string">b&quot;hello world&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(h.hexdigest())</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>参考：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/hashlib.html">hashlib — Secure hashes and message digests</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/God-Li/p/7631604.html">python — hashlib模块使用详解</a></li>
+</ol>
+<h2 id="binascii"><a href="#binascii" class="headerlink" title="binascii"></a>binascii</h2><p>这个模块可能是自带的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 导入binascii模块</span></span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"> </span><br><span class="line">a = <span class="string">b&#x27;BE27E8FFFF010203&#x27;</span></span><br><span class="line"><span class="comment"># 先把b&#x27;BE27E8FFFF010203&#x27;转换成二进制数据然后在用十六进制表示</span></span><br><span class="line">b = binascii.b2a_hex(a)</span><br><span class="line"><span class="comment"># 打印出：b&#x27;42453237453846464646303130323033&#x27;，例如B对应ascii码42，E对应ascii码45</span></span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># 与b2a_hex相反，打印出：b&#x27;BE27E8FFFF010203&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(binascii.a2b_hex(b))</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># 这个功能和b2a_hex()一样</span></span><br><span class="line"><span class="comment"># 打印出：b&#x27;42453237453846464646303130323033&#x27;，例如B对应ascii码42，E对应ascii码45</span></span><br><span class="line">c = binascii.hexlify(a)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 这个功能和a2b_hex()一样，打印出：b&#x27;BE27E8FFFF010203&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(binascii.unhexlify(c))</span><br><span class="line"></span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「大西瓜-PaulChan」的原创文章，遵循CC <span class="number">4.0</span> BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https://blog.csdn.net/qq562029186/article/details/<span class="number">82627099</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="random模块"><a href="#random模块" class="headerlink" title="random模块"></a>random模块</h2><ol>
+<li><p>random.getrandbits(k)：生成占内存k位以内的<strong>随机整数</strong></p>
+</li>
+<li><p>random.random()：随机生成一个在[0,1)范围内的<strong>数字</strong>（不是整数）</p>
+</li>
+<li><p>random.uniform(a,b)：产生一个在(a,b)区间的<strong>随机数</strong>（不一定是整数）</p>
+<p>功能等同于<code>choice(range(start, stop, step))</code></p>
+</li>
+<li><p>random.randrange(a,b,c)：返回[a,b)范围内步长为c的<strong>随机整数</strong></p>
+</li>
+<li><p>random.randint(a,b)：返回一个在区间[a,b]的<strong>随机整数</strong></p>
+<p>功能等同于<code>randrange(a, b+1)</code></p>
+</li>
+<li><p>random.choice(seq)：返回seq可迭代对象中的一个随机元素</p>
+</li>
+<li><p>random.choices(population, weights=None, *, cum_weights=None, k=1)：随机选择，是<code>random.choice(seq)</code>的升级版本。k是需要选择元素的个数</p>
+<p>使用示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>choice([<span class="string">&#x27;win&#x27;</span>, <span class="string">&#x27;lose&#x27;</span>, <span class="string">&#x27;draw&#x27;</span>])</span><br><span class="line"><span class="string">&#x27;draw&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>random.sample(population,k)：随机取样</p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>sample([<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>], k=<span class="number">4</span>)</span><br><span class="line">[<span class="number">40</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">30</span>]</span><br></pre></td></tr></table></figure>
+
+<p>choices与sample的区别：</p>
+<ul>
+<li>choices在抽取随机元素时是包含重复元素的，即：一个元素可能会被抽取多次。</li>
+<li>反之，在sample中，抽取的元素是不重复的。</li>
+<li>所以，在抽取元素大于样本集总数时，choices会继续而sample会报错：</li>
+</ul>
+</li>
+<li><p>random.shuffle(x,[,random])：打乱序列</p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>deck = <span class="string">&#x27;ace two three four&#x27;</span>.split()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>shuffle(deck)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>deck</span><br><span class="line">[<span class="string">&#x27;four&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;ace&#x27;</span>, <span class="string">&#x27;three&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>不同的分布模式<br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Triangular_distribution">random.triangular(low, high, mode)</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Beta_distribution">random.betavariate(alpha, beta)</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Exponential_distribution">random.expovariate(lambd)</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Gamma_distribution">random.gammavariate(alpha, beta)</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Normal_distribution">random.gauss(mu, sigma)</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Log-normal_distribution">random.lognormvariate(mu, sigma)</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Normal_distribution">random.normalvariate(mu, sigma)</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Von_Mises_distribution">random.vonmisesvariate(mu, kappa)</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Pareto_distribution">random.paretovariate(alpha)</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Weibull_distribution">random.weibullvariate(alpha, beta)</a></p>
+</blockquote>
+</li>
+</ol>
+<p>文档：</p>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/random.html#module-random">random— 生成伪随机数</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41084236/article/details/81457949">随机数：Python3.7的random模块详解</a></p>
+<h2 id="bit-length-函数"><a href="#bit-length-函数" class="headerlink" title="bit_length()函数"></a>bit_length()函数</h2><p>可以返回整数的二进制位数或长度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">bin</span>(<span class="number">256</span>)</span><br><span class="line"><span class="string">&#x27;0b100000000&#x27;</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(<span class="built_in">bin</span>(<span class="number">256</span>)) - <span class="number">2</span>   <span class="comment">#去掉二进制的0b</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">bin</span>(<span class="number">256</span>), (<span class="number">256</span>).bit_length()</span><br><span class="line">(<span class="string">&#x27;0b100000000&#x27;</span>, <span class="number">9</span>)</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X = <span class="number">99</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">bin</span>(X), X.bit_length()</span><br><span class="line">(<span class="string">&#x27;0b1100011&#x27;</span>, <span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="int-from-bytes和int-to-bytes函数"><a href="#int-from-bytes和int-to-bytes函数" class="headerlink" title="int.from_bytes和int.to_bytes函数"></a>int.from_bytes和int.to_bytes函数</h2><ol>
+<li><p>int.from_bytes函数</p>
+<ul>
+<li><p>功能：int.from_bytes(x)可以把bytes类型的变量x转换为十进制整数，并返回这个十进制的整数</p>
+</li>
+<li><p>参数：int.from_bytes(bytes,byteorder,*,signed=Flase)，其中bytes是输入的bytes类型的变量，byteorder主要有两种：‘big’和‘little’；signed=True表示需要考虑符号位</p>
+</li>
+<li><p>举例说明：int_s  = int.from_bytes(s, byteorder=’little’, signed=True)，其中s=’\xf1\xff’，则输出int_s=-15。分析一下过程，’\x’表示十六进制数，先把’f1’写成二进制数：1111 0001，’ff’同上：1111 1111.由于s的高低位标志是’little’，即’f1’是低位，’ff’是高位，所以正确的顺序应该是’fff1’，即11111111 1111 0001.又因为要考虑符号位，第一位是1，所以s是负数，要进行取反加一才是正确的十进制数（第一位符号位的1不变），可以得到10000000 00001111，写成十进制，就是-15，也就是int_s的结果。上面的例子中，如果signed=False，则无符号位；若byteorder=’big’，则输入s的左边是高位，右边是低位。</p>
+</li>
+<li><p>```python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>s1 = b’\xf1\xff’<br>print(int.from_bytes(s1, byteorder=’little’, signed=True))<br>-15<br>print(int.from_bytes(s1, byteorder=’big’, signed=False))<br>61951<br>s2 = b’\xff\xf1’<br>print(int.from_bytes(s2, byteorder=’little’, signed=False))<br>61951</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">2. int.to_bytes(int,byteorder)函数</span><br><span class="line"></span><br><span class="line">   是int.from_bytes的逆过程，把十进制整数转换为bytes类型的格式</span><br><span class="line">   </span><br><span class="line">   注：int.to_bytes函数中的int是需要替换的参数，括号里面第一个参数int指定输出的位数，第二个参数byteorder指定大端和小端(&#x27;big&#x27;或者&#x27;little&#x27;)</span><br><span class="line"></span><br><span class="line">## Math</span><br><span class="line"></span><br><span class="line">1. log(x,[,base])函数：base是底数</span><br><span class="line"></span><br><span class="line">## sympy</span><br><span class="line"></span><br><span class="line">这个扩展包主要是用在科学计算上</span><br><span class="line"></span><br><span class="line">1. 特殊的数字：</span><br><span class="line"></span><br><span class="line">   1. 虚数单位：</span><br><span class="line"></span><br><span class="line">      ```python</span><br><span class="line">      sympy.I  #i</span><br><span class="line">      sympy.I**2  #i的平方</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li><p>平方根：sympy.sqrt(-1)</p>
+</li>
+<li><p>自然对数：sympy.E</p>
+</li>
+<li><p>以e为底的对数：sympy.log(s)$\leftrightarrow \ln(s)$</p>
+</li>
+<li><p>无穷大：sympy.oo(两个小写的o)</p>
+</li>
+<li><p>圆周率$\pi$：sympy.pi</p>
+</li>
+<li><p>对x求n次方根：sympy.root(x,n)</p>
+</li>
+<li><p>阶乘：sympy.factorial(x)</p>
+</li>
+<li><p>sympy.sin(sympy.pi/2)</p>
+</li>
+</ol>
+</li>
+<li><p>表达式与表达式求值：</p>
+<ol>
+<li><p>可以表示表达式，也可以赋值求值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = sympy.Symbol(<span class="string">&#x27;x&#x27;</span>) <span class="comment">#这一步是一定要有的，作用就是把x当做一个可以暂时不赋值的变量，如果没有这一步会报错。</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">type</span>(x))</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">sympy</span>.<span class="title">core</span>.<span class="title">symbol</span>.<span class="title">Symbol</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">fx</span> = 2*<span class="title">x</span> + 1  </span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">print</span>(<span class="params"><span class="built_in">type</span>(<span class="params">fx</span>)</span>) #查看<span class="title">fx</span>的类型</span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> &#x27;<span class="title">sympy</span>.<span class="title">core</span>.<span class="title">add</span>.<span class="title">Add</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">f</span> = <span class="title">fx</span>.<span class="title">evalf</span>(<span class="params">subs=&#123;x:<span class="number">6</span>&#125;</span>) #传入一个<span class="title">x</span>的值，求出<span class="title">fx</span></span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">print</span>(<span class="params">f</span>)</span></span><br></pre></td></tr></table></figure></li>
+<li><p>多元方程求解：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x1,y = sympy.symbols(<span class="string">&#x27;x1 y&#x27;</span>)</span><br><span class="line">f1 = <span class="number">2</span> * x1 + y</span><br><span class="line">f1 = f1.evalf(subs = &#123;x1:<span class="number">1</span>,y:<span class="number">2</span>&#125;) <span class="comment">#传入自变量值求出因变量值</span></span><br><span class="line"><span class="built_in">print</span>(f1)</span><br></pre></td></tr></table></figure></li>
+<li><p>求解函数：solve():</p>
+<p>使用函数sympy.solve()函数解方程，该函数通常传入两个参数：</p>
+<ol>
+<li>方程的表达式（左边为所有的项，右边为0，只传入左边即可）</li>
+<li>方程中的未知数</li>
+</ol>
+<p>该函数会返回一个列表，代表方程的所有的可能的解（根）</p>
+<ol>
+<li><p>解普通方程</p>
+<p>首先定义代表未知数的符号x</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x=sympy.Symbol(<span class="string">&#x27;x&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用solve解方程：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(sympy.solve(x-<span class="number">6</span>,x))</span><br></pre></td></tr></table></figure></li>
+<li><p>解方程组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x,y = sympy.symbols(<span class="string">&#x27;x y&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(sympy.solve([x-y-<span class="number">8</span>,x+y-<span class="number">2</span>],[x,y]))</span><br><span class="line"><span class="comment">#第一个参数传入的方程组（也就是表达式），</span></span><br><span class="line"><span class="comment">#第二个参数传入的是方程组的变量，两个参数都是以列表形式传入</span></span><br></pre></td></tr></table></figure>
+
+<p>注：如果无法给出确切解，那么将会给出用最后一个变量构成的其它变量的表达式。</p>
+<p>注：如果只有一个式子两个变量，可以不用列表，但是如果更多，还是用列表传入参数更好</p>
+</li>
+<li><p>求和：</p>
+<p>第一个参数传入求和的表达式</p>
+<p>第二个参数的元组的第一个参数是变量，第二个参数是变量起始（包括这个起始），第三参数是变量上限（包括这个上限）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n = sympy.Symbol(<span class="string">&#x27;n&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(sympy.summation(<span class="number">2</span> * n, (n,<span class="number">1</span>,<span class="number">100</span>)))</span><br></pre></td></tr></table></figure></li>
+<li><p>解带有求和式的方程</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = sympy.Symbol(<span class="string">&#x27;x&#x27;</span>)  <span class="comment">#声明符号变量</span></span><br><span class="line">i = sympy.Symbol(<span class="string">&#x27;i&#x27;</span>,integer = <span class="literal">True</span>)</span><br><span class="line">f =  sympy.summation(x,(i,<span class="number">1</span>,<span class="number">5</span>)) + <span class="number">10</span> * x - <span class="number">15</span>  <span class="comment">#构造表达式</span></span><br><span class="line">reslute = sympy.solve(f,x) <span class="comment">#第一个参数是表达式，第二个是变量；求解结果</span></span><br><span class="line"><span class="built_in">print</span>(reslute)</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>求极限sympy.limit():</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = sympy.Symbol(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">f1 = sympy.sin(x)/x    <span class="comment">#声明表达式</span></span><br><span class="line">sympy.limit(f1,x,<span class="number">0</span>)     <span class="comment">#求解表达式是f1,变量x趋于0的极限</span></span><br></pre></td></tr></table></figure></li>
+<li><p>求导sympy.diff()：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x= sympy.Symbol(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">f = x**<span class="number">2</span>+<span class="number">2</span>*x+<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(sympy.diff(f,x))</span><br><span class="line"><span class="comment">#第一个参数是表达式，第二个参数是符号变量、返回一个&lt;class &#x27;sympy.core.add.Add&#x27;&gt;类型的结果</span></span><br></pre></td></tr></table></figure></li>
+<li><p>多元函数求偏导：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">y = sympy.Symbol(<span class="string">&#x27;y&#x27;</span>)</span><br><span class="line">f3 = x**<span class="number">2</span>+<span class="number">2</span>*x+y**<span class="number">4</span></span><br><span class="line"><span class="built_in">print</span>(sympy.diff(f3,x)) <span class="comment">#对x求偏导</span></span><br><span class="line"><span class="built_in">print</span>(sympy.diff(f3,y)) <span class="comment">#对y求偏导</span></span><br></pre></td></tr></table></figure></li>
+<li><p>求定积分：sympy.integrate()：</p>
+<p>第一个参数填入被积表达式，第二个参数填入一个元组【元组的第一个参数是变量、第二个参数是下限、第二个参数是上限】<br>#求解复杂积分的时候，遵循变量嵌套原则</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = sympy.Symbol(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">f = <span class="number">2</span> * x</span><br><span class="line"><span class="built_in">print</span>(sympy.integrate(f,(x,<span class="number">0</span>,<span class="number">1</span>)))</span><br></pre></td></tr></table></figure></li>
+<li><p>求解不定积分:简单来说不定积分就是没有上下限的积分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = sympy.Symbol(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">f = sympy.exp(x)+<span class="number">3</span>**<span class="number">2</span>+sympy.log(x)</span><br><span class="line"><span class="built_in">print</span>(sympy.integrate(f,x)) </span><br><span class="line"><span class="comment">#求不定积分，此时第二个参数填入的不再是元组，而是直接传入变量，因为没有上下限。当然也可以作为元组形式传入元组</span></span><br></pre></td></tr></table></figure></li>
+<li><p>求解微分方程 y’=4xy [即(dy/dx) = 4*x*y] ：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义符号变量</span></span><br><span class="line">x=sympy.Symbol(<span class="string">&#x27;x&#x27;</span>) </span><br><span class="line"> <span class="comment">#定义符号函数、f可以与x构成函数方程f(x)、因为x就是自变量、f是因变量。</span></span><br><span class="line">f = sympy.Function(<span class="string">&#x27;f&#x27;</span>)</span><br><span class="line">fx = sympy.diff(f(x),x)</span><br><span class="line"><span class="built_in">print</span>(sympy.dsolve(fx-<span class="number">2</span>*x*f(x),f(x)))</span><br><span class="line"><span class="comment">#dsolve函数第一个参数传入微分方程表达式，第二个参数传入函数【f与x构成的函数f(x)】</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<p>sympy.nextprime(x)：在比x更大的素数中返回最小的那个</p>
+<p>sympy.Derivative(expr,*variables,**kwargs):根据符号对给定表达式进行微积分，前两个参数的意思应该分别是表达式和变量，就是表达式对于变量2的求导。<a target="_blank" rel="noopener" href="https://www.osgeo.cn/sympy/modules/core.html#sympy.core.function.Derivative">Derivative(sympy.core.function中的类)</a></p>
+<p>像这种不常见，也没有文档去写这些函数的，可以再官方文档的右上角的索引处根据函数名字首字母来查找</p>
+<p><del>还有一些高级的用法，可以参考参考来源的第一个</del></p>
+<p>没有了，那一篇文章已经被我搬完了，更多的还是看官方文档吧</p>
+<p>参考来源：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42658739/article/details/90417727">数据科学之sympy库</a></li>
+<li><a target="_blank" rel="noopener" href="https://geek-docs.com/python/python-tutorial/python-sympy.html">SymPy 教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.sympy.org/latest/index.html#">SymPy1.8文档</a></li>
+</ol>
+<h2 id="fractions"><a href="#fractions" class="headerlink" title="fractions"></a>fractions</h2><ol>
+<li><p>Fraction函数的使用方法：</p>
+<ol>
+<li><p>Fraction(分子,分母)：这个函数分子默认为0，分母默认为1，输入两个整数分别作为分子分母，返回约分后的结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>Fraction()</span><br><span class="line">Fraction(<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Fraction(<span class="number">10</span>,<span class="number">6</span>)</span><br><span class="line">Fraction(<span class="number">5</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>Fraction(float)：输入浮点数会返回该数的分子分母形式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>Fraction(<span class="number">3.5</span>)</span><br><span class="line">Fraction(<span class="number">7</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>Fraction(分数)：输入分数，返回概述的分子分母形式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>Fraction(<span class="number">3</span>/<span class="number">2</span>)</span><br><span class="line">Fraction(<span class="number">3</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>Fraction(十进制整数)：输入一个整数，默认输入的是分子，分母为1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>Fraction(<span class="number">4</span>)</span><br><span class="line">Fraction(<span class="number">4</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>Fraction(字符串)：输入字符型苏子，会返回该数的分子分母</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h2><blockquote>
+<p>常见对称密码在 Crypto.Cipher 库下，主要有： <code>DES 3DES AES RC4 Salsa20</code><br>非对称密码在 Crypto.PublicKey 库下，主要有： <code>RSA ECC DSA</code><br>哈希密码在 Crypto.Hash 库下，常用的有： <code>MD5 SHA-1 SHA-128 SHA-256</code><br>随机数在 Crypto.Random 库下<br>实用小工具在 Crypto.Util 库下<br>数字签名在 Crypto.Signature 库下</p>
+</blockquote>
+<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><ol>
+<li><p>Crypto.Util Package</p>
+<ol>
+<li><p>Crypto.Util.number module</p>
+<ol>
+<li><p>getPrime(N,randfunc=None)</p>
+<p>返回一个随机的N bit的素数，如果randfunc参数被省略，那么会使用函数Crypto.Random.get_random_bytes()</p>
+<p>注：在使用过程中，我觉的只要知道该函数会返回一个N bit 的数字就够了，get_random_bytes()函数返回的东西不同于本函数，即使调用本函数时没有写第二个参数</p>
+</li>
+<li><p>.</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Crypto.Random Package</p>
+<ol>
+<li><p>Crypto.Random.get_random_bytes(N)</p>
+<p>返回一个长度为N的随机字符串</p>
+<p>注：这个函数会返回一些意义不明的东西，不是数字</p>
+</li>
+<li><p>Crypto.Random.random module</p>
+<ol>
+<li><p>Crypto.Random.random.getrandbits(N)</p>
+<p>返回一个随机的int整数，最长不超过N bits</p>
+</li>
+<li><p>Crypto.Random.random.randrange([start,]stop[,step])</p>
+<p>返回一个随机在范围range(开始，停止，步长)范围的整数，如果没有写，默认开始为0，步长为1</p>
+</li>
+<li><p>Crypto.Random.random.randint(a,b)</p>
+<p>返回一个不小于a不大于b的int整数</p>
+</li>
+<li><p>Crypto.Random.random.choice(seq)</p>
+<p>返回从序列seq中随机选取的元素</p>
+</li>
+<li><p>Crypto.Random.random.shuffle(seq)</p>
+<p>将seq中的元素打乱（是原地操作）</p>
+</li>
+<li><p>Crypto.Random.random.sample(population,k)</p>
+<p>返回含有随机从列表population中选择出的k个元素的列表</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Crypto.Cipher Package</p>
+<ol>
+<li><p>Crypto.Cipher.AES.new(key,mode,*args,**kwargs) 函数：</p>
+<p>创建一个新的AES密码：</p>
+<p>参数：</p>
+<ul>
+<li><p>key(bytes/bytearray/memoryview)：在对称密码中使用的密钥</p>
+<p>它必须是16、24或32字节长（分别用于AES-128、AES-192或AES-256）。</p>
+<p>在SIV模式（mode参数为SIV）中，它的字节长分别加倍到32、48、64字节</p>
+</li>
+<li><p>mode(支持常量 mode_*)，是用来确定AES的操作模式的</p>
+</li>
+</ul>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://www.pycryptodome.org/en/latest/src/cipher/aes.html">AES</a></p>
+</li>
+<li></li>
+</ol>
+</li>
+</ol>
+<p>参考：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34239592/article/details/88712750">Crypto算法库详解</a></li>
+</ol>
+<h2 id="string（标准库）"><a href="#string（标准库）" class="headerlink" title="string（标准库）"></a>string（标准库）</h2><h3 id="字符串常量"><a href="#字符串常量" class="headerlink" title="字符串常量"></a>字符串常量</h3><ol>
+<li><p>string.ascii_letters：输出包含有顺序排列的先小写后大写字母的字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>string.ascii_letters</span><br><span class="line"><span class="string">&#x27;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>string.ascii_lowercase：输出含有小写字母的字符串（顺序排列）</p>
+</li>
+<li><p>string.ascii_uppercase：输出含有大写字母的字符串（顺序排列）</p>
+</li>
+<li><p>string.digits：输出含有十进制数字常数的字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>string.digits</span><br><span class="line"><span class="string">&#x27;0123456789&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>string.hexdigits：输出含有十六进制数字常数的字符串</p>
+</li>
+<li><p>string.octdigits：八进制</p>
+</li>
+<li><p>string.punctuation：输出含有标点字符的字符串（ascii字符串）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>string.punctuation</span><br><span class="line"><span class="string">&#x27;!&quot;#$%&amp;\&#x27;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>string.printable：输出含有可打印字符的字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>string.printable</span><br><span class="line"><span class="string">&#x27;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!&quot;#$%&amp;\&#x27;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ \t\n\r\x0b\x0c&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>string.whitespace：输出被视作空白的可打印字符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>string.whitespace</span><br><span class="line"><span class="string">&#x27; \t\n\r\x0b\x0c&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="自定义字符串格式-Custom-String-Formatting"><a href="#自定义字符串格式-Custom-String-Formatting" class="headerlink" title="自定义字符串格式 Custom String Formatting"></a>自定义字符串格式 Custom String Formatting</h3><h2 id="OS"><a href="#OS" class="headerlink" title="OS"></a>OS</h2><p>os.urandom(size)：返回大小为size的字符串，它是适合加密使用的随机字节</p>
+<p>参考：</p>
+<ol>
+<li>官方文档：<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/string.html#module-string">string— 常见的字符串操作</a> </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/leacock1991/article/details/101467158">Python标准库之string 库</a></li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>John Doe</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2021/08/26/python%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/">http://example.com/2021/08/26/python%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/08/26/rsa%E6%A8%A1%E5%9D%97/"></a>
+            
+            
+            <a class="next" rel="next" href="/2021/08/26/python%E7%AC%94%E8%AE%B0/"></a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© John Doe | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
